@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/cloud")
+@RequestMapping
 @Validated
 public class CloudController {
 
@@ -44,16 +44,10 @@ public class CloudController {
     @Autowired
     JwtUtils jwtUtils;
 
-
-//    @ResponseBody
-//    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<AuthorizationResponseEntity> login(@Valid @RequestBody AuthorizationRequestEntity authorization) {
-//        return new ResponseEntity<>(new AuthorizationResponseEntity(cloudService.login(authorization)), HttpStatus.OK);
-//    }
-
     @ResponseBody
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthorizationResponseEntity> login(@Valid @RequestBody AuthorizationRequestEntity authorization) {
+        System.out.println();
         return new ResponseEntity<>(new AuthorizationResponseEntity(cloudService.login(authorization)), HttpStatus.OK);
     }
 
