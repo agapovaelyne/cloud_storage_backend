@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,24 +20,24 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    private final PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
     @Override
     public UserDetails loadUserByUsername(String login) {
-        return userRepository.findByLogin(login).orElseThrow(() -> new UsernameNotFoundException(login));
+        User userDetails = userRepository.findByLogin(login).orElseThrow(() -> new UsernameNotFoundException(login));
+        userDetails.setPassword(new BCryptPasswordEncoder().encode(userDetails.getPassword()));
+        return userDetails;
     }
 
-    //todo:оставить или убрать
-    public boolean saveUser(User user) {
-        User userFromDB = userRepository.findByLogin(user.getLogin()).get();
 
-        if (userFromDB != null) {
-            return false;
-        }
-
-        user.setRoles(Collections.singleton(new Role(EnumRoles.ROLE_USER)));
-        user.setPassword(encoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return true;
-    }
+//    public boolean saveUser(User user) {
+//        User userFromDB = userRepository.findByLogin(user.getLogin()).get();
+//
+//        if (userFromDB != null) {
+//            return false;
+//        }
+//
+//        user.setRoles(Collections.singleton(new Role(EnumRoles.ROLE_USER)));
+//        user.setPassword(encoder.encode(user.getPassword()));
+//        userRepository.save(user);
+//        return true;
+//    }
 }

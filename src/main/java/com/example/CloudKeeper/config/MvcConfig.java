@@ -16,22 +16,20 @@ import java.util.Arrays;
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/login").setViewName("login");
-//        registry.addViewController("/logout").setViewName("logout");
-//        registry.addViewController("/file").setViewName("file");
-//        registry.addViewController("/logout").setViewName("list");
-//    }
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/logout").setViewName("logout");
+        registry.addViewController("/file").setViewName("file");
+        registry.addViewController("/logout").setViewName("list");
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:8080")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedMethods("*")
                 .allowCredentials(true)
-                .allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers")
-                .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials");
-
+                .allowedHeaders("*");
     }
 }

@@ -20,6 +20,6 @@ public class AuthorizationRequestEntity {
 //    @Setter
     @NotBlank(message = "login couldn't be blank")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[A-ZА-Я]).{8,}$")
-    @Max(40)
+    //@Max(40)
     private String password;
 }
