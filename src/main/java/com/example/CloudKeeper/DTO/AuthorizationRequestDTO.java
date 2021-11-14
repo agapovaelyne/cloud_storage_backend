@@ -1,4 +1,4 @@
-package com.example.CloudKeeper.entity;
+package com.example.CloudKeeper.DTO;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorizationRequestEntity {
+public class AuthorizationRequestDTO {
 //    @Getter
 //    @Setter
     @NotBlank(message = "login couldn't be blank")

@@ -1,11 +1,11 @@
-package com.example.CloudKeeper.entity;
+package com.example.CloudKeeper.DTO;
 
 import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorResponseEntity {
+public class ErrorResponseDTO {
     @Getter
     @Setter
     private String message;
