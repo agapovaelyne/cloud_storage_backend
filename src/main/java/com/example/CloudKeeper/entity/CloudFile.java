@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -14,13 +13,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "storage")
-public class File {
+public class CloudFile {
 
-    public File(String name, String type, byte[] data, long size) {
+    public CloudFile(String name, String type, byte[] data, long size) {
         this.name = name;
         this.type = type;
         this.data = data;
-        this.size = size;
+        this.fileSize = size;
     }
 
     @JsonIgnore
@@ -41,11 +40,10 @@ public class File {
     @Lob
     private byte[] data;
 
-    @Column
-    Long size;
+    @Column(name = "size")
+    private Long fileSize;
 
     @JsonIgnore
     @Column
-    Long userId;
-
+    private Long userId;
 }

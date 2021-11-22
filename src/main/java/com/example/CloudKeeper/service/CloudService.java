@@ -1,7 +1,7 @@
 package com.example.CloudKeeper.service;
 
 import com.example.CloudKeeper.DTO.AuthorizationRequestDTO;
-import com.example.CloudKeeper.entity.File;
+import com.example.CloudKeeper.entity.CloudFile;
 import com.example.CloudKeeper.exception.AuthorizationError;
 import com.example.CloudKeeper.exception.CloudException;
 import com.example.CloudKeeper.repository.CloudRepository;
@@ -16,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 
@@ -52,14 +51,24 @@ public class CloudService {
         cloudRepository.logout(authToken).orElseThrow(() -> new AuthorizationError("Authorization error occurred: couldn't remove JWT"));
     }
 
-    public File uploadFile(String authToken, String fileName, MultipartFile file) throws IOException {
-        File filePOJO = new File(fileName, file.getContentType(), file.getBytes(), file.getSize());
-        File savedFile = cloudRepository.uploadFile(filePOJO, authToken).orElseThrow(() -> new CloudException("Couldn't save the file " + fileName));
-        return savedFile;
+    public CloudFile uploadFile(String authToken, String fileName, MultipartFile file) throws IOException {
+        CloudFile cloudFilePOJO = new CloudFile(fileName, file.getContentType(), file.getBytes(), file.getSize());
+        CloudFile savedCloudFile = cloudRepository.uploadFile(cloudFilePOJO, authToken).orElseThrow(() -> new CloudException("Couldn't save the file " + fileName));
+        return savedCloudFile;
     }
 
-    public List<File> getFiles(String authToken, int limit) {
-        List<File> files = cloudRepository.getFiles(authToken, limit).orElseThrow(() -> new CloudException("Couldn't get list of files"));
-        return files;
+    public Long removeFile(String authToken, String fileName) {
+        Long removedFileId = cloudRepository.removeFile(authToken, fileName).orElseThrow(() -> new CloudException("Couldn't remove the file " + fileName));
+        return removedFileId;
+    }
+
+    public CloudFile downloadFile(String authToken, String fileName) {
+        CloudFile file = cloudRepository.downloadFile(authToken, fileName).orElseThrow(() -> new CloudException("Couldn't download the file " + fileName));
+        return file;
+    }
+
+    public List<CloudFile> getFiles(String authToken, int limit) {
+        List<CloudFile> cloudFiles = cloudRepository.getFiles(authToken, limit).orElseThrow(() -> new CloudException("Couldn't get list of files"));
+        return cloudFiles;
     }
 }

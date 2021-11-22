@@ -1,5 +1,12 @@
-POST http://localhost:8081/login
+GET http://localhost:8081/file?filename=2.jpg
+Accept: application/json, text/plain, */*
+auth-token: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbHluZSIsImlhdCI6MTYzNzUxODQ3MCwiZXhwIjoxNjM3NjA0ODcwfQ.jdMv0jzBVAyDaJfw0Kn1iR4oPUE9gFh-X8JJ4EeJGufzH76PuKpRD5bXarR-1zb0oPx7btEIvqwCyewfwmoscA
+Origin: http://localhost:8080
+###
+
+POST
 Content-Type: application/json
+
 
 {
 "login": "user1",
