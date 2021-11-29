@@ -6,10 +6,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ErrorResponseDTO {
-    @Getter
-    @Setter
     private String message;
-    @Getter
-    @Setter
     private int id;
 }

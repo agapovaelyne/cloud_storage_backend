@@ -1,7 +1,5 @@
 package com.example.CloudKeeper.security;
 import io.jsonwebtoken.*;
-import com.example.CloudKeeper.entity.User;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -10,15 +8,15 @@ import java.util.Date;
 
 @Component
 public class JwtUtils {
-    @Value("${cloud.app.jwtSecret}")
+    @Value("${app.jwt.secret}")
+    //@Value("${cloud.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${cloud.app.jwtExpirationMs}")
+    @Value("${app.jwt.expirationMs}")
+    //@Value("${cloud.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
     public String generateJwtToken(UserDetails userPrincipal) {
-        //UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
-
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
@@ -47,6 +45,7 @@ public class JwtUtils {
         return false;
     }
 
+    //TODO: применить проверку
     private Boolean isTokenExpired(String authToken) {
         final Date expiration = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken).getBody().getExpiration();
         return expiration.before(new Date());

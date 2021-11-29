@@ -4,34 +4,21 @@ import com.example.CloudKeeper.DTO.AuthorizationRequestDTO;
 import com.example.CloudKeeper.DTO.AuthorizationTokenDTO;
 import com.example.CloudKeeper.DTO.ErrorResponseDTO;
 import com.example.CloudKeeper.entity.CloudFile;
-import com.example.CloudKeeper.entity.CloudMultipartFile;
-import com.example.CloudKeeper.exception.AuthorizationError;
+import com.example.CloudKeeper.exception.ErrorInputData;
 import com.example.CloudKeeper.exception.CloudException;
+import com.example.CloudKeeper.exception.UnauthorizedException;
 import com.example.CloudKeeper.service.CloudService;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.*;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
-import javax.activation.MimeType;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URI;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
-
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/")
@@ -67,37 +54,21 @@ public class CloudController {
         cloudService.removeFile(authToken, filename);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    //StreamingResponseBody
-    //ResponseEntity<Resource>
-    @GetMapping(value = "/file", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Resource> downloadFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename, HttpServletResponse response) throws IOException {
-        CloudFile file = cloudService.downloadFile(authToken, filename);
-//        CloudMultipartFile file = new CloudMultipartFile(cloudService.downloadFile(authToken, filename));
-//        final HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-//        //headers.setContentDisposition(ContentDisposition.builder("inline").filename(filename).build());
-//        headers.setContentDisposition(ContentDisposition.builder("attachment").filename(filename).build());
-//        headers.setContentLength(file.getData().length);
-//        final StreamingResponseBody responseBody = out -> {
-//            out.write(file.getData());
-//        };
-//        //return new ResponseEntity<>(responseBody, headers, HttpStatus.OK);
 
-//        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"");
-//        response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(file.getData().length));
-//        response.setContentType(file.getType());
-//        ServletOutputStream outputStream = response.getOutputStream();
-//        outputStream.write(file.getData());
-//        outputStream.flush();
-//        outputStream.close();
+    @GetMapping(value = "/file", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<byte[]> downloadFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename) {
+        CloudFile file = cloudService.downloadFile(authToken, filename);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(file.getType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
-                //.body(file);
-                .body(new ByteArrayResource(file.getData()));
-        //return new ResponseEntity<String>(String.format("{\"hash\":\"%d\",\"file\":\"%s\"}", file.hashCode(), new String(file.getData())), HttpStatus.OK);
+                .body(file.getData());
+    }
 
+    @PutMapping(value = "/file", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> editFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename, @RequestBody Map<String, String> bodyParams) {
+        cloudService.editFile(authToken, filename, bodyParams.get("filename"));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/list")
@@ -106,26 +77,27 @@ public class CloudController {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    ResponseEntity<ErrorResponseDTO> handleValidationExc(MethodArgumentNotValidException exc) {
-        return handleRunTimeExc(new AuthorizationError(exc.getLocalizedMessage()));
+    public ResponseEntity<ErrorResponseDTO> handleValidationExc(MethodArgumentNotValidException exc) {
+        return handleRunTimeExc(new ErrorInputData("Error input data: " + exc.getLocalizedMessage()));
     }
 
-    @ExceptionHandler(AuthorizationError.class)
-    ResponseEntity<ErrorResponseDTO> handleRunTimeExc(AuthorizationError exc) {
+    @ExceptionHandler(ErrorInputData.class)
+    public ResponseEntity<ErrorResponseDTO> handleRunTimeExc(ErrorInputData exc) {
         return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<ErrorResponseDTO> handleRunTimeExc(UnauthorizedException exc) {
+        return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(CloudException.class)
-    ResponseEntity<ErrorResponseDTO> handleRunTimeExc(CloudException exc) {
-        return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ErrorResponseDTO> handleRunTimeExc(CloudException exc) {
+        return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-//    @ExceptionHandler(StorageFileNotFoundException.class)
-//    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
-//        return ResponseEntity.notFound().build();
-//    }
 
-//    @ExceptionHandler(MaxUploadSizeExceededException.class)
-//    public ResponseEntity<ResponseMessage> handleMaxSizeException(MaxUploadSizeExceededException exc) {
-//        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage("File too large!"));
-//    }
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ErrorResponseDTO> handleMaxSizeException(MaxUploadSizeExceededException exc) {
+        return handleRunTimeExc(new CloudException("File too large: " + exc.getLocalizedMessage()));
+    }
 }

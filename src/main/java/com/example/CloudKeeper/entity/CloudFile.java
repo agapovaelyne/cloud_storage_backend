@@ -19,7 +19,7 @@ public class CloudFile {
         this.name = name;
         this.type = type;
         this.data = data;
-        this.fileSize = size;
+        this.size = size;
     }
 
     @JsonIgnore
@@ -41,7 +41,7 @@ public class CloudFile {
     private byte[] data;
 
     @Column(name = "size")
-    private Long fileSize;
+    private Long size;
 
     @JsonIgnore
     @Column

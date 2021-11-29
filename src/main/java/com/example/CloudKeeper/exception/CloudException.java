@@ -13,5 +13,4 @@ public class CloudException extends RuntimeException {
         super(msg);
         id = ++errorCounter;
     }
-
 }
