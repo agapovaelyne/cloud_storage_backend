@@ -14,22 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CloudRepositoryTest {
     private final TestModels testModels = new TestModels();
-
-    private final FileRepository fileRepositoryMock = Mockito.mock(FileRepository.class);
-    private final UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
-    private final CloudRepository cloudRepository = new CloudRepository(userRepositoryMock, fileRepositoryMock);
+    private final CloudRepository cloudRepository = new CloudRepository(testModels.getUserRepositoryMock(), testModels.getFileRepositoryMock());
 
     @BeforeEach
     void login_test_token() {
         cloudRepository.login(testModels.getAuthToken(), testModels.getUserPrincipal());
-        Mockito.when(userRepositoryMock.findByLogin(Mockito.anyString()))
-                .thenReturn(of(testModels.getUser()));
     }
 
     @Test
     void uploadFile_test() {
-        Mockito.when(fileRepositoryMock.save(testModels.getFile()))
-                .thenReturn(testModels.getFile());
         Optional<CloudFile> actual = cloudRepository.uploadFile(testModels.getFile(), testModels.getWebAuthToken());
         Optional<CloudFile> expected = of(testModels.getFile());
         assertEquals(expected, actual);
@@ -37,8 +30,6 @@ public class CloudRepositoryTest {
 
     @Test
     void removeFile_test() {
-        Mockito.when(fileRepositoryMock.removeByUserIdAndName(testModels.getUserId(), testModels.getFilename()))
-                .thenReturn(of(testModels.getFile().getId()));
         Optional<Long> actual = cloudRepository.removeFile(testModels.getWebAuthToken(), testModels.getFilename());
         Optional<Long> expected = of(testModels.getFile().getId());
         assertEquals(expected, actual);
@@ -46,8 +37,6 @@ public class CloudRepositoryTest {
 
     @Test
     void downloadFile_test() {
-        Mockito.when(fileRepositoryMock.findByUserIdAndName(testModels.getUserId(), testModels.getFilename()))
-                .thenReturn(of(testModels.getFile()));
         Optional<CloudFile> actual = cloudRepository.downloadFile(testModels.getWebAuthToken(), testModels.getFilename());
         Optional<CloudFile> expected = of(testModels.getFile());
         assertEquals(expected, actual);
@@ -55,10 +44,6 @@ public class CloudRepositoryTest {
 
     @Test
     void editFile_test() {
-        Mockito.when(fileRepositoryMock.findByUserIdAndName(testModels.getUserId(), testModels.getFilename()))
-                .thenReturn(of(testModels.getFile()));
-        Mockito.when(fileRepositoryMock.save(testModels.getFile()))
-                .thenReturn(testModels.getFile());
         Optional<CloudFile> actual = cloudRepository.editFile(testModels.getWebAuthToken(), testModels.getFilename(), testModels.getNewFilename());
         Optional<CloudFile> expected = of(testModels.getFile());
         assertEquals(expected, actual);
@@ -66,8 +51,6 @@ public class CloudRepositoryTest {
 
     @Test
     void getFiles_test() {
-        Mockito.when(fileRepositoryMock.findAllByUserIdWithLimit(testModels.getUserId(), testModels.getLimit()))
-                .thenReturn(testModels.getFileList());
         Optional<List<CloudFile>> actual = cloudRepository.getFiles(testModels.getWebAuthToken(), testModels.getLimit());
         Optional<List<CloudFile>> expected = of(testModels.getFileList());
         assertEquals(expected, actual);

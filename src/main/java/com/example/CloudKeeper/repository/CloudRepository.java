@@ -30,8 +30,8 @@ public class CloudRepository {
 
     public Map<String, UserDetails> tokenStorage = new ConcurrentHashMap<>();
 
-    public Optional<UserDetails> login(String authToken, UserDetails userPrincipal) {
-        return ofNullable(tokenStorage.put(authToken, userPrincipal));
+    public void login(String authToken, UserDetails userPrincipal) {
+        tokenStorage.put(authToken, userPrincipal);
     }
 
     public Optional<UserDetails> logout(String authToken) {

@@ -24,14 +24,15 @@ import java.util.List;
 public class CloudService {
     private final CloudRepository cloudRepository;
 
-    @Autowired
-    AuthenticationManager authenticationManager;
 
-    @Autowired
+    AuthenticationManager authenticationManager;
     JwtUtils jwtUtils;
 
-    public CloudService(CloudRepository cloudRepository) {
+    @Autowired
+    public CloudService(CloudRepository cloudRepository, AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
         this.cloudRepository = cloudRepository;
+        this.authenticationManager = authenticationManager;
+        this.jwtUtils = jwtUtils;
     }
 
     public String login(AuthorizationRequestDTO authorization) {

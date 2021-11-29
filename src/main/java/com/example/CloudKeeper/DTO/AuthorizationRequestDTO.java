@@ -1,8 +1,5 @@
 package com.example.CloudKeeper.DTO;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
