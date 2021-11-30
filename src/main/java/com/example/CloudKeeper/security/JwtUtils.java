@@ -9,11 +9,9 @@ import java.util.Date;
 @Component
 public class JwtUtils {
     @Value("${app.jwt.secret}")
-    //@Value("${cloud.app.jwtSecret}")
     private String jwtSecret;
 
     @Value("${app.jwt.expirationMs}")
-    //@Value("${cloud.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
     public String generateJwtToken(UserDetails userPrincipal) {
@@ -29,25 +27,8 @@ public class JwtUtils {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken).getBody().getSubject();
     }
 
-    //TODO:добить ошибки или объединить
-
-    public boolean validateJwtToken(String authToken) {
-        try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
-            return true;
-        } catch (SignatureException e) {
-        } catch (MalformedJwtException e) {
-        } catch (ExpiredJwtException e) {
-        } catch (UnsupportedJwtException e) {
-        } catch (IllegalArgumentException e) {
-        }
-
-        return false;
-    }
-
-    //TODO: применить проверку
-    private Boolean isTokenExpired(String authToken) {
-        final Date expiration = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken).getBody().getExpiration();
-        return expiration.before(new Date());
+    public boolean validateJwtToken(String authToken) throws SignatureException, MalformedJwtException, ExpiredJwtException, UnsupportedJwtException, IllegalArgumentException {
+        Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+        return true;
     }
 }

@@ -8,6 +8,7 @@ import com.example.CloudKeeper.exception.ErrorInputData;
 import com.example.CloudKeeper.exception.CloudException;
 import com.example.CloudKeeper.exception.UnauthorizedException;
 import com.example.CloudKeeper.service.CloudService;
+import org.apache.log4j.Logger;
 import org.springframework.http.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,6 +27,7 @@ import java.util.Map;
 public class CloudController {
 
     private final CloudService cloudService;
+    private final Logger logger = Logger.getLogger(CloudController.class);
 
     public CloudController(CloudService cloudService) {
         this.cloudService = cloudService;
@@ -46,19 +48,21 @@ public class CloudController {
     @PostMapping(value = "/file", produces = MediaType.APPLICATION_JSON_VALUE, consumes = {"multipart/form-data"})
     public ResponseEntity<?> uploadFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename, @RequestBody MultipartFile file) throws IOException {
         cloudService.uploadFile(authToken, filename, file);
+        logger.info(String.format("File %s uploaded", filename));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/file", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> removeFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename) {
         cloudService.removeFile(authToken, filename);
+        logger.info(String.format("File %s removed", filename));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/file", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<byte[]> downloadFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename) {
         CloudFile file = cloudService.downloadFile(authToken, filename);
-
+        logger.info(String.format("File %s downloaded", filename));
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(file.getType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
@@ -68,12 +72,15 @@ public class CloudController {
     @PutMapping(value = "/file", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> editFile(@RequestHeader("auth-token") String authToken, @Valid @RequestParam String filename, @RequestBody Map<String, String> bodyParams) {
         cloudService.editFile(authToken, filename, bodyParams.get("filename"));
+        logger.info(String.format("File %s renamed to %s", filename, bodyParams.get("filename")));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/list")
     public List<CloudFile> getFiles(@RequestHeader("auth-token") String authToken, @RequestParam("limit") int limit) {
-        return cloudService.getFiles(authToken, limit);
+        List<CloudFile> fileList = cloudService.getFiles(authToken, limit);
+        logger.info(String.format("File list provided. Limit %d", limit));
+        return fileList;
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -83,16 +90,19 @@ public class CloudController {
 
     @ExceptionHandler(ErrorInputData.class)
     public ResponseEntity<ErrorResponseDTO> handleRunTimeExc(ErrorInputData exc) {
+        logger.error(String.format("Error %s : %s", exc.getClass().getName(), exc.getLocalizedMessage()));
         return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorResponseDTO> handleRunTimeExc(UnauthorizedException exc) {
+        logger.error(String.format("Error %s : %s", exc.getClass().getName(), exc.getLocalizedMessage()));
         return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(CloudException.class)
     public ResponseEntity<ErrorResponseDTO> handleRunTimeExc(CloudException exc) {
+        logger.error(String.format("Error %s : %s", exc.getClass().getName(), exc.getLocalizedMessage()));
         return new ResponseEntity<>(new ErrorResponseDTO(exc.getLocalizedMessage(), exc.getId()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

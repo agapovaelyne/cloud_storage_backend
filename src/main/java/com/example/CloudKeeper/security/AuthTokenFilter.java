@@ -1,9 +1,12 @@
 package com.example.CloudKeeper.security;
 
+import com.example.CloudKeeper.service.CloudService;
 import com.example.CloudKeeper.service.UserService;
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +33,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserService userDetailsService;
 
+    private final Logger logger = Logger.getLogger(CloudService.class);
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
@@ -44,7 +49,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
-        } catch (Exception e) {
+        } catch (ExpiredJwtException exc) {
+            logger.error(String.format("Error ExpiredJwtException: JWT has been expired"));
+        } catch (Exception exc) {
+            logger.error(String.format("Error %s while getting JWT: %s", exc.getClass().getName(), exc.getLocalizedMessage()));
         }
 
         filterChain.doFilter(request, response);
@@ -52,9 +60,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("auth-token");
-
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
             return headerAuth.substring(7);
+        } else {
+            logger.error("Error Invalid auth-token format: should start with 'Bearer '");
         }
         return null;
     }

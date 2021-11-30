@@ -33,12 +33,12 @@ public class ServiceAuthTest {
     }
 
     @Test
-    void logout_failed_test() {
-        String expected = String.format("Error while remove JWT");
+    void logout_failed_test2() {
+        String expected = CloudException.class.getName();
         CloudException exception = assertThrows(CloudException.class,
                 () -> cloudService.logout(testModels.getAuthToken())
         );
-        assertEquals(expected, exception.getMessage());
+        assertEquals(expected, exception.getClass().getName());
     }
 
 }

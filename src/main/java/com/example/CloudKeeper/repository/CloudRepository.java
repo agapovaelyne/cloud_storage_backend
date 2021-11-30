@@ -2,6 +2,8 @@ package com.example.CloudKeeper.repository;
 
 import com.example.CloudKeeper.entity.CloudFile;
 import com.example.CloudKeeper.exception.UnauthorizedException;
+import com.example.CloudKeeper.service.CloudService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
@@ -17,9 +19,9 @@ import static java.util.Optional.ofNullable;
 @Repository
 public class CloudRepository {
 
-    private FileRepository fileRepository;
-
-    private UserRepository userRepository;
+    private final FileRepository fileRepository;
+    private final UserRepository userRepository;
+    private final Logger logger = Logger.getLogger(CloudService.class);
 
     @Autowired
     public CloudRepository(UserRepository userRepository,
@@ -41,6 +43,7 @@ public class CloudRepository {
     public Optional<CloudFile> uploadFile(CloudFile cloudFile, String authToken) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
+            logger.info(String.format("User defined: login %s, id %d", userRepository.findById(userId.get()).get().getLogin(), userId.get()));
             cloudFile.setUserId(userId.get());
             return Optional.of(fileRepository.save(cloudFile));
         } else {
@@ -52,6 +55,7 @@ public class CloudRepository {
     public Optional<Long> removeFile(String authToken, String fileName) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
+            logger.info(String.format("User defined: login %s, id %d", userRepository.findById(userId.get()).get().getLogin(), userId.get()));
             return fileRepository.removeByUserIdAndName(userId.get(), fileName);
         } else {
             throw new UnauthorizedException("Invalid auth-token");
@@ -62,6 +66,7 @@ public class CloudRepository {
     public Optional<CloudFile> downloadFile(String authToken, String fileName) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
+            logger.info(String.format("User defined: login %s, id %d", userRepository.findById(userId.get()).get().getLogin(), userId.get()));
             return fileRepository.findByUserIdAndName(userId.get(), fileName);
         } else {
             throw new UnauthorizedException("Invalid auth-token");
@@ -72,6 +77,7 @@ public class CloudRepository {
     public Optional<CloudFile> editFile(String authToken, String fileName, String newFileName) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
+            logger.info(String.format("User defined: login %s, id %d", userRepository.findById(userId.get()).get().getLogin(), userId.get()));
             Optional<CloudFile> cloudFile = fileRepository.findByUserIdAndName(userId.get(), fileName);
             cloudFile.ifPresent(file -> file.setName(newFileName));
             return Optional.of(fileRepository.save(cloudFile.get()));
@@ -84,6 +90,7 @@ public class CloudRepository {
     public Optional<List<CloudFile>> getFiles(String authToken, int limit) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
+            logger.info(String.format("User defined: login %s, id %d", userRepository.findById(userId.get()).get().getLogin(), userId.get()));
             return ofNullable(fileRepository.findAllByUserIdWithLimit(userId.get(), limit));
         } else {
             throw new UnauthorizedException("Invalid auth-token");

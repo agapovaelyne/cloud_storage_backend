@@ -6,6 +6,7 @@ import com.example.CloudKeeper.exception.ErrorInputData;
 import com.example.CloudKeeper.exception.CloudException;
 import com.example.CloudKeeper.repository.CloudRepository;
 import com.example.CloudKeeper.security.JwtUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -23,10 +24,10 @@ import java.util.List;
 @Service
 public class CloudService {
     private final CloudRepository cloudRepository;
+    private final Logger logger = Logger.getLogger(CloudService.class);
 
-
-    AuthenticationManager authenticationManager;
-    JwtUtils jwtUtils;
+    private final AuthenticationManager authenticationManager;
+    private final JwtUtils jwtUtils;
 
     @Autowired
     public CloudService(CloudRepository cloudRepository, AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
@@ -42,6 +43,7 @@ public class CloudService {
             UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
             String jwt = jwtUtils.generateJwtToken(userPrincipal);
             cloudRepository.login(jwt, userPrincipal);
+            logger.info(String.format("User %s authorization success. JWT: %s", userPrincipal.getUsername(), jwt));
             return jwt;
         } catch (BadCredentialsException e) {
             throw new ErrorInputData("Bad credentials");
@@ -49,7 +51,8 @@ public class CloudService {
     }
 
     public void logout(String authToken) {
-        cloudRepository.logout(authToken).orElseThrow(() -> new CloudException("Error while remove JWT"));
+        UserDetails userPrincipal = cloudRepository.logout(authToken).orElseThrow(() -> new CloudException("Error while remove JWT"));
+        logger.info(String.format("User %s logout success", userPrincipal.getUsername()));
     }
 
     public CloudFile uploadFile(String authToken, String fileName, MultipartFile file) throws IOException {

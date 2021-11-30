@@ -161,6 +161,8 @@ public class TestModels {
     public UserRepository getUserRepositoryMock() {
         Mockito.when(userRepositoryMock.findByLogin(Mockito.anyString()))
                 .thenReturn(of(user));
+        Mockito.when(userRepositoryMock.findById(any()))
+                .thenReturn(of(user));
         return userRepositoryMock;
     }
 
