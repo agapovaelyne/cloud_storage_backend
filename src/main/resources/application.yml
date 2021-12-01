@@ -12,6 +12,7 @@
         file-size-threshold: 2KB
         max-file-size: 500MB
       jpa:
+        show-sql: false
         properties:
           hibernate:
             dialect: org.hibernate.dialect.PostgreSQLDialect

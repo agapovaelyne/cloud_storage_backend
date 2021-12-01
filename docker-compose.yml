@@ -6,18 +6,21 @@ services:
     build: ./
     ports:
       - 8081:8081
+    depends_on:
+      - cloud-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://cloud-db:5432/cloud_db
   cloudKeeper-frontend:
     image: cloudkeeper-frontend:latest
-      #environment:
-      #PORT: 3000
-    #PROXY_API: http://playground-web-backend:8080/
     ports:
       - 8080:8080
   cloud-db:
-    image: charming_villani:latest
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db_init/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_DB: "cloud_db"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
-    ports:
-      - 5432:5432
