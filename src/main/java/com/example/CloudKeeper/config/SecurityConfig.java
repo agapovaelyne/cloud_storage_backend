@@ -58,7 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-    //TODO: authorities -enum class
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

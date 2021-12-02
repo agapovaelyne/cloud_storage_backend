@@ -65,7 +65,7 @@ public class CloudContainersTest {
     }
 
     @Test
-    void app_is_running() {
+    void app_is_running_test() {
         var portBack = appContainer.getMappedPort(APP_PORT);
         ResponseEntity<String> entity = restTemplate.getForEntity(HOST + portBack, String.class);
         System.out.println(entity.getBody());
@@ -73,7 +73,7 @@ public class CloudContainersTest {
     }
 
     @Test
-    void frontend_is_running() {
+    void frontend_is_running_test() {
         var portFront = frontendContainer.getMappedPort(8080);
         ResponseEntity<String> entity = restTemplate.getForEntity(HOST + portFront, String.class);
         System.out.println(entity.getBody());

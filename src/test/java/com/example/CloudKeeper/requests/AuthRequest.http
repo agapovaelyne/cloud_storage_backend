@@ -4,14 +4,3 @@ auth-token: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbHluZSIsImlhdCI6MTYzNzUxODQ3
 Origin: http://localhost:8080
 ###
 
-POST
-Content-Type: application/json
-
-
-{
-"login": "user1",
-"password": "P@sswd123"
-}
-
-
-###
