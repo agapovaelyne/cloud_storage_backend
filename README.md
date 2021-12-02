@@ -80,15 +80,19 @@ docker-compose up
 - база данных по адресу http://localhost:5432.
 
 ## Использование:
-- **С описанием и правилами использования front'а можно ознакомиться [здесь](frontend/cloudKeeper-frontend/README.md),**
+- С описанием и правилами использования front'а можно ознакомиться [здесь](frontend/cloudKeeper-frontend/README.md),
 
 - Для тестирования функционала **рекомендуется использовать преднастроенные учетные данные** (см. логин и пароль, роль пользователя в [скрипте инициализации БД](db_init/init.sql))
 
 ## Скриншоты:
 <b name="enter">Enter Window:</b>
+
+
 ![Enter window](img/EnterWindow.png)
 
 <b name="enter">Main Window:</b>
+
+
 ![Enter window](img/MainWindow.png)
 
 
