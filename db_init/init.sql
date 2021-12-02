@@ -1,6 +1,3 @@
-create database cloud_db
-    with owner postgres;
-
 create table users
 (
     id       serial
@@ -9,7 +6,7 @@ create table users
     login    varchar(30) not null
         constraint users_login_key
             unique,
-    password varchar(40) not null
+    password varchar(255) not null
 );
 
 create table storage
@@ -61,8 +58,8 @@ alter table storage
     owner to postgres;
 
 insert into users (login, password)
-values ('Elyne', '@pplicAtion123'),
-       ('User1', 'P@sswd123');
+values ('Elyne@gmail.com', '$2a$09$lGLoHmbdAusmMX/BnRV6defnPQN937UaEL//l0Rld5XvDrwe3kx/W'),
+       ('User1@mail.ru', '$2a$10$T2/QpCZf8kp5Xq1aMb.hyuC0G9Dr7/PzHqEE5/BYY2PCGA83Oq9.W');
 
 insert into roles (name)
 values ('ROLE_USER'),

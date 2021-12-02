@@ -18,11 +18,13 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    BCryptPasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String login) {
         User userDetails = userRepository.findByLogin(login).orElseThrow(() -> new UsernameNotFoundException(login));
-        userDetails.setPassword(new BCryptPasswordEncoder().encode(userDetails.getPassword()));
+        userDetails.setPassword(userDetails.getPassword());
         return userDetails;
     }
 
@@ -32,8 +34,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
         user.setRoles(Collections.singleton(new Role(EnumRoles.ROLE_USER)));
-        //user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        user.setPassword(user.getPassword());
+        user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }

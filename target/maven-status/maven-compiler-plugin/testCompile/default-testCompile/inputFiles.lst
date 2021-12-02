@@ -1,5 +1,5 @@
 /Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/controller/CloudControllerTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/CloudKeeperApplicationTests.java
+/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/container/CloudContainersTest.java
 /Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/service/CloudServiceTest.java
 /Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/repository/RepositoryAuthTest.java
 /Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/service/ServiceAuthTest.java

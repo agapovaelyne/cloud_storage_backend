@@ -34,3 +34,77 @@ INFO	2021-12-01 15:49:39,034	41	com.example.CloudKeeper.controller.CloudControll
 INFO	2021-12-01 15:49:39,037	44	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
 INFO	2021-12-01 15:49:39,064	71	com.example.CloudKeeper.service.CloudService	[main]	User Test user authorization success. JWT: authTocken
 INFO	2021-12-01 15:49:39,069	76	com.example.CloudKeeper.service.CloudService	[main]	User Test user logout success
+ERROR	2021-12-02 12:49:07,056	0	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	Error Invalid auth-token format: should start with 'Bearer '
+INFO	2021-12-02 12:49:07,487	431	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	User user1 authorization success. JWT: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTYzODQzODU0NywiZXhwIjoxNjM4NTI0OTQ3fQ.rG6zJ-O5ZcRFppLFmvwpbtksPgdlDJrkSvcZfQvUow7SC1pDPWMb_7PjX9Qp2quY45N5GOMAgb2fbMvgnwsgsA
+INFO	2021-12-02 12:49:07,597	541	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-2]	User defined: login user1, id 3
+INFO	2021-12-02 12:49:07,750	694	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-2]	File list provided. Limit 3
+ERROR	2021-12-02 12:50:34,708	87652	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-6]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 12:50:34,769	87713	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-6]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 12:50:41,084	94028	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-8]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 12:50:41,130	94074	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-8]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 12:50:41,727	94671	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-9]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 12:50:41,780	94724	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-9]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 12:50:41,884	94828	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-10]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 12:50:41,938	94882	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-10]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 12:50:42,029	94973	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 12:50:42,085	95029	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-1]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 12:50:52,449	105393	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-2]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 12:50:52,503	105447	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-2]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 12:51:15,352	128296	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-3]	Error Invalid auth-token format: should start with 'Bearer '
+INFO	2021-12-02 12:51:15,406	128350	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-3]	User Elyne authorization success. JWT: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbHluZSIsImlhdCI6MTYzODQzODY3NSwiZXhwIjoxNjM4NTI1MDc1fQ.KvWLxRZgZv8wSEiQ8pYtR3kR8pK1cyl9rbY8YtHVNiXqqnik6e8YVrmPSxy0mJWbzEs1POm3iimIzTLpPTzRnQ
+INFO	2021-12-02 12:51:15,448	128392	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-5]	User defined: login Elyne, id 1
+INFO	2021-12-02 12:51:15,608	128552	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-5]	File list provided. Limit 3
+INFO	2021-12-02 12:51:17,703	130647	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-7]	User defined: login Elyne, id 1
+INFO	2021-12-02 12:51:17,798	130742	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-7]	File 29.jpeg renamed to 162.jpeg
+INFO	2021-12-02 12:51:21,103	134047	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-9]	User defined: login Elyne, id 1
+INFO	2021-12-02 12:51:21,138	134082	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-9]	File 162.jpeg downloaded
+INFO	2021-12-02 12:51:27,912	140856	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	User defined: login Elyne, id 1
+INFO	2021-12-02 12:51:28,017	140961	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-1]	File 790.png removed
+INFO	2021-12-02 12:51:30,041	142985	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-2]	User defined: login Elyne, id 1
+INFO	2021-12-02 12:51:30,271	143215	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-2]	File list provided. Limit 3
+ERROR	2021-12-02 12:55:34,234	0	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	Error Invalid auth-token format: should start with 'Bearer '
+INFO	2021-12-02 12:55:34,588	354	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	User Elyne authorization success. JWT: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbHluZSIsImlhdCI6MTYzODQzODkzNCwiZXhwIjoxNjM4NTI1MzM0fQ.MxiplwFEa9tgIS8dWwo1wvoJi56jO5hPmmwiVDiY0IhsR-PYGx2kQq8R9PxBiqbK-qsLYfUbUwbk5dLbZNItXg
+INFO	2021-12-02 12:55:34,737	503	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-2]	User defined: login Elyne, id 1
+INFO	2021-12-02 12:55:35,132	898	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-2]	File list provided. Limit 3
+ERROR	2021-12-02 12:56:00,864	26630	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-5]	Error Invalid auth-token format: should start with 'Bearer '
+INFO	2021-12-02 12:56:00,956	26722	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-5]	User user1 authorization success. JWT: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTYzODQzODk2MCwiZXhwIjoxNjM4NTI1MzYwfQ.CR7R7uilM_BTvzzN5ZU3KDqpH1XdUM4nPl5u-shykh3Frq8JSP0EBe7LsvLlaXZjo3OAHLGuFimRmlhonTus1Q
+INFO	2021-12-02 12:56:00,996	26762	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-6]	User defined: login user1, id 3
+INFO	2021-12-02 12:56:01,125	26891	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-6]	File list provided. Limit 3
+INFO	2021-12-02 12:58:00,982	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 12:58:00,994	12	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 12:58:00,998	16	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 12:58:01,002	20	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 12:58:01,006	24	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 12:58:01,056	74	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-02 12:58:01,060	78	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-02 12:58:01,063	81	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-02 12:58:01,066	84	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-02 12:58:01,086	104	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-02 12:58:22,871	21889	com.example.CloudKeeper.service.CloudService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-02 12:58:22,877	21895	com.example.CloudKeeper.service.CloudService	[main]	User Test user logout success
+ERROR	2021-12-02 13:07:55,156	0	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	Error Invalid auth-token format: should start with 'Bearer '
+INFO	2021-12-02 13:07:55,489	333	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	User Elyne authorization success. JWT: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbHluZSIsImlhdCI6MTYzODQzOTY3NSwiZXhwIjoxNjM4NTI2MDc1fQ.0OlV9MMqq144OBMD847U-c6561ZL4pbbDXNr1Jt6KIiFIR6HfvhxBGordSSwV1SuUvq8Tf27y3hCUMgDpFRVAA
+INFO	2021-12-02 13:07:55,611	455	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-2]	User defined: login Elyne, id 1
+INFO	2021-12-02 13:07:55,847	691	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-2]	File list provided. Limit 3
+ERROR	2021-12-02 13:08:11,974	16818	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-5]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 13:08:12,068	16912	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-5]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 13:08:17,438	22282	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-6]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 13:08:17,532	22376	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-6]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 13:08:21,096	25940	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-7]	Error Invalid auth-token format: should start with 'Bearer '
+ERROR	2021-12-02 13:08:21,183	26027	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-7]	Error com.example.CloudKeeper.exception.ErrorInputData : Error input data: Bad credentials
+ERROR	2021-12-02 13:09:22,017	1	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	Error Invalid auth-token format: should start with 'Bearer '
+INFO	2021-12-02 13:09:29,265	7249	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-1]	User user1 authorization success. JWT: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTYzODQzOTc2OSwiZXhwIjoxNjM4NTI2MTY5fQ.QDmdD4A3JKiDeu5aSRJx8-TOr5i9Zdvr3_fgQtwyFmLU_J2WvAU7v0jPKukPC2XhFABJtGk2Jyc24jnRAKQrrQ
+INFO	2021-12-02 13:09:39,369	17353	com.example.CloudKeeper.service.CloudService	[http-nio-8081-exec-2]	User defined: login user1, id 3
+INFO	2021-12-02 13:09:39,539	17523	com.example.CloudKeeper.controller.CloudController	[http-nio-8081-exec-2]	File list provided. Limit 3
+INFO	2021-12-02 13:10:24,008	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 13:10:24,017	9	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 13:10:24,020	12	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 13:10:24,023	15	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 13:10:24,025	17	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-02 13:10:24,065	57	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-02 13:10:24,068	60	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-02 13:10:24,071	63	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-02 13:10:24,073	65	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-02 13:10:24,089	81	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-02 13:10:49,920	25912	com.example.CloudKeeper.service.CloudService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-02 13:10:49,926	25918	com.example.CloudKeeper.service.CloudService	[main]	User Test user logout success
