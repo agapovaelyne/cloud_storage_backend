@@ -14,7 +14,7 @@ public class AuthorizationRequestDTO {
     @Size(min = 2, max = 30)
     private String login;
 
-    @NotBlank(message = "login couldn't be blank")
+    @NotBlank(message = "password couldn't be blank")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[A-ZА-Я]).{8,}$")
     private String password;
 }

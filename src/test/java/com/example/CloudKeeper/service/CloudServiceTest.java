@@ -14,12 +14,12 @@ import static java.util.Optional.of;
 
 public class CloudServiceTest {
     private final TestModels testModels = new TestModels();
-    CloudRepository cloudRepositoryMock = Mockito.mock(CloudRepository.class);
-    CloudService cloudService = new CloudService(cloudRepositoryMock, testModels.getAuthenticationManagerMock(), testModels.getJwtUtilsMock());
+    private final CloudRepository cloudRepositoryMock = Mockito.mock(CloudRepository.class);
+    private final CloudService cloudService = new CloudService(cloudRepositoryMock, testModels.getAuthenticationManagerMock(), testModels.getJwtUtilsMock());
 
     @Test
     void uploadFile_test() throws IOException {
-        Mockito.when(cloudRepositoryMock.uploadFile(Mockito.any(),Mockito.any()))
+        Mockito.when(cloudRepositoryMock.uploadFile(Mockito.any(), Mockito.any()))
                 .thenReturn(of(testModels.getFile()));
         CloudFile actual = cloudService.uploadFile(testModels.getAuthToken(), testModels.getFilename(), testModels.getMultipartFileMock());
         CloudFile expected = testModels.getFile();

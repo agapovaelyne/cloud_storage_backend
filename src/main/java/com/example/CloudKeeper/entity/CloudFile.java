@@ -40,7 +40,7 @@ public class CloudFile {
     @Lob
     private byte[] data;
 
-    @Column(name = "size")
+    @Column
     private Long size;
 
     @JsonIgnore

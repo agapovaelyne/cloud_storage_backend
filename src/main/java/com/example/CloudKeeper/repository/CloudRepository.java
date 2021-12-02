@@ -3,6 +3,7 @@ package com.example.CloudKeeper.repository;
 import com.example.CloudKeeper.entity.CloudFile;
 import com.example.CloudKeeper.exception.UnauthorizedException;
 import com.example.CloudKeeper.service.CloudService;
+import lombok.Data;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +16,8 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Optional.ofNullable;
-
+@Data
+@Transactional
 @Repository
 public class CloudRepository {
 
@@ -30,7 +32,7 @@ public class CloudRepository {
         this.fileRepository = fileRepository;
     }
 
-    public Map<String, UserDetails> tokenStorage = new ConcurrentHashMap<>();
+    private Map<String, UserDetails> tokenStorage = new ConcurrentHashMap<>();
 
     public void login(String authToken, UserDetails userPrincipal) {
         tokenStorage.put(authToken, userPrincipal);
@@ -51,7 +53,6 @@ public class CloudRepository {
         }
     }
 
-    @Transactional
     public Optional<Long> removeFile(String authToken, String fileName) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
@@ -62,7 +63,6 @@ public class CloudRepository {
         }
     }
 
-    @Transactional
     public Optional<CloudFile> downloadFile(String authToken, String fileName) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
@@ -73,7 +73,6 @@ public class CloudRepository {
         }
     }
 
-    @Transactional
     public Optional<CloudFile> editFile(String authToken, String fileName, String newFileName) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {
@@ -86,7 +85,7 @@ public class CloudRepository {
         }
     }
 
-    @Transactional
+
     public Optional<List<CloudFile>> getFiles(String authToken, int limit) {
         Optional<Long> userId = getUserId(authToken);
         if (userId.isPresent()) {

@@ -15,9 +15,9 @@ import static org.mockito.Mockito.mock;
 
 public class ServiceAuthTest {
 
-    TestModels testModels = new TestModels();
-    CloudRepository cloudRepositoryMock = mock(CloudRepository.class);
-    CloudService cloudService = new CloudService(cloudRepositoryMock, testModels.getAuthenticationManagerMock(), testModels.getJwtUtilsMock());
+    private final TestModels testModels = new TestModels();
+    private final CloudRepository cloudRepositoryMock = mock(CloudRepository.class);
+    private final CloudService cloudService = new CloudService(cloudRepositoryMock, testModels.getAuthenticationManagerMock(), testModels.getJwtUtilsMock());
 
     @Test
     void login_test() {

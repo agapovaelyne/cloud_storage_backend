@@ -17,7 +17,7 @@ public class RepositoryAuthTest {
     @Test
     void login_test() {
         cloudRepository.login(testModels.getAuthToken(), testModels.getUserPrincipal());
-        assertTrue(cloudRepository.tokenStorage.get(testModels.getAuthToken()).equals(testModels.getUserPrincipal()));
+        assertTrue(cloudRepository.getTokenStorage().get(testModels.getAuthToken()).equals(testModels.getUserPrincipal()));
     }
 
     @Test
