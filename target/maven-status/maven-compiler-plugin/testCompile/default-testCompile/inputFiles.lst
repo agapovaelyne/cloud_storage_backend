@@ -1,8 +1,8 @@
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/controller/CloudControllerTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/container/CloudContainersTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/service/CloudServiceTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/repository/RepositoryAuthTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/service/ServiceAuthTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/repository/CloudRepositoryTest.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/model/TestModels.java
-/Users/elina.agapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/controller/ControllerAuthTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/service/CloudServiceTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/controller/CloudControllerTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/model/TestModels.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/controller/ControllerAuthTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/repository/CloudRepositoryTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/repository/RepositoryAuthTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/service/ServiceAuthTest.java
+/Users/elyneagapova/IdeaProjects/CloudKeeper/src/test/java/com/example/CloudKeeper/container/CloudContainersTest.java

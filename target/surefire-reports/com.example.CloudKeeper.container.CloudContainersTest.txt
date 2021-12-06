@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.CloudKeeper.container.CloudContainersTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.77 s - in com.example.CloudKeeper.container.CloudContainersTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.583 s - in com.example.CloudKeeper.container.CloudContainersTest

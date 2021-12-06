@@ -1,0 +1,10 @@
+com/example/CloudKeeper/model/TestModels$1.class
+com/example/CloudKeeper/model/TestModels.class
+com/example/CloudKeeper/controller/CloudControllerTest.class
+com/example/CloudKeeper/container/CloudContainersTest.class
+com/example/CloudKeeper/repository/RepositoryAuthTest.class
+com/example/CloudKeeper/controller/ControllerAuthTest.class
+com/example/CloudKeeper/service/ServiceAuthTest.class
+com/example/CloudKeeper/service/CloudServiceTest.class
+com/example/CloudKeeper/repository/CloudRepositoryTest.class
+com/example/CloudKeeper/container/CloudContainersTest$Initializer.class

@@ -20,7 +20,9 @@
               lob:
                 non_contextual_creation: 'true'
         hibernate:
-          ddl-auto: update
+          ddl-auto: 'update'
+    liquibase:
+      enabled: true
   app:
     jwt:
       secret: '$ecretKey'
