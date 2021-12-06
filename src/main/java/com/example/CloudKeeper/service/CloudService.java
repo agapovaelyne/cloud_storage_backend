@@ -24,7 +24,7 @@ import java.util.List;
 @Service
 public class CloudService {
     private final CloudRepository cloudRepository;
-    private final Logger logger = Logger.getLogger(CloudService.class);
+    private static final Logger LOGGER = Logger.getLogger(CloudService.class);
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
@@ -43,7 +43,7 @@ public class CloudService {
             UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
             String jwt = jwtUtils.generateJwtToken(userPrincipal);
             cloudRepository.login(jwt, userPrincipal);
-            logger.info(String.format("User %s authorization success. JWT: %s", userPrincipal.getUsername(), jwt));
+            LOGGER.info(String.format("User %s authorization success. JWT: %s", userPrincipal.getUsername(), jwt));
             return jwt;
         } catch (BadCredentialsException e) {
             throw new ErrorInputData("Bad credentials");
@@ -52,7 +52,7 @@ public class CloudService {
 
     public void logout(String authToken) {
         UserDetails userPrincipal = cloudRepository.logout(authToken).orElseThrow(() -> new CloudException("Error while remove JWT"));
-        logger.info(String.format("User %s logout success", userPrincipal.getUsername()));
+        LOGGER.info(String.format("User %s logout success", userPrincipal.getUsername()));
     }
 
     public CloudFile uploadFile(String authToken, String fileName, MultipartFile file) throws IOException {

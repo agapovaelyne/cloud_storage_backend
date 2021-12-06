@@ -33,7 +33,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserService userDetailsService;
 
-    private final Logger logger = Logger.getLogger(CloudService.class);
+    private static final Logger LOGGER = Logger.getLogger(CloudService.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -50,9 +50,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (ExpiredJwtException exc) {
-            logger.error(String.format("Error ExpiredJwtException: JWT has been expired"));
+            LOGGER.error(String.format("Error ExpiredJwtException: JWT has been expired"));
         } catch (Exception exc) {
-            logger.error(String.format("Error %s while getting JWT: %s", exc.getClass().getName(), exc.getLocalizedMessage()));
+            LOGGER.error(String.format("Error %s while getting JWT: %s", exc.getClass().getName(), exc.getLocalizedMessage()));
         }
 
         filterChain.doFilter(request, response);
@@ -63,7 +63,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
             return headerAuth.substring(7);
         } else {
-            logger.error("Error Invalid auth-token format: should start with 'Bearer '");
+            LOGGER.error("Error Invalid auth-token format: should start with 'Bearer '");
         }
         return null;
     }
