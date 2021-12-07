@@ -20,4 +20,6 @@ com/example/CloudKeeper/entity/User.class
 com/example/CloudKeeper/controller/CloudController.class
 com/example/CloudKeeper/security/JwtUtils.class
 com/example/CloudKeeper/exception/UnauthorizedException.class
+com/example/CloudKeeper/controller/AuthController.class
+com/example/CloudKeeper/service/AuthService.class
 com/example/CloudKeeper/DTO/ErrorResponseDTO.class

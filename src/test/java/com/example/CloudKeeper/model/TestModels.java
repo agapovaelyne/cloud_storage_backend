@@ -8,6 +8,7 @@ import com.example.CloudKeeper.entity.User;
 import com.example.CloudKeeper.repository.FileRepository;
 import com.example.CloudKeeper.repository.UserRepository;
 import com.example.CloudKeeper.security.JwtUtils;
+import com.example.CloudKeeper.service.AuthService;
 import com.example.CloudKeeper.service.CloudService;
 import com.example.CloudKeeper.service.UserService;
 import lombok.Data;
@@ -33,6 +34,7 @@ public class TestModels {
     private final FileRepository fileRepositoryMock = Mockito.mock(FileRepository.class);
     private final UserRepository userRepositoryMock = Mockito.mock(UserRepository.class);
     private final CloudService cloudServiceMock = Mockito.mock(CloudService.class);
+    private final AuthService authServiceMock = Mockito.mock(AuthService.class);
 
     private final int limit = 3;
     private final String authToken = "authTocken";
@@ -178,12 +180,16 @@ public class TestModels {
                     .thenReturn(file);
             Mockito.when(cloudServiceMock.getFiles(authToken, limit))
                     .thenReturn(fileList);
-            Mockito.when(cloudServiceMock.login(authRequest))
-                    .thenReturn(authToken);
-            Mockito.when(cloudServiceMock.login(badAuthRequest))
-                    .thenReturn(null);
         } catch (IOException exc) {
         }
         return cloudServiceMock;
+    }
+
+    public AuthService getAuthServiceMock() {
+            Mockito.when(authServiceMock.login(authRequest))
+                    .thenReturn(authToken);
+            Mockito.when(authServiceMock.login(badAuthRequest))
+                    .thenReturn(null);
+        return authServiceMock;
     }
 }

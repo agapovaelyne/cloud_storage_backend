@@ -1,6 +1,8 @@
 --liquibase formatted sql
 --changeset Elyne:001
 --validCheckSum: 8:cb5320983b2b5e45190a7df63747490f
+--preconditions onFail:CONTINUE onError:HALT
+--precondition-sql-check expectedResult:0 SELECT count(*) FROM information_schema.tables where table_name = 'users';
 
 create table users
 (

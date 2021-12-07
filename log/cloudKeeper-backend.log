@@ -372,3 +372,87 @@ INFO	2021-12-06 23:43:51,184	129	com.example.CloudKeeper.controller.CloudControl
 INFO	2021-12-06 23:43:51,203	148	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
 INFO	2021-12-06 23:44:20,848	29793	com.example.CloudKeeper.service.CloudService	[main]	User Test user authorization success. JWT: authTocken
 INFO	2021-12-06 23:44:20,878	29823	com.example.CloudKeeper.service.CloudService	[main]	User Test user logout success
+INFO	2021-12-07 10:26:35,444	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:26:35,477	33	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:26:35,481	37	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:26:35,484	40	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:26:35,487	43	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:26:35,577	133	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:26:35,579	135	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:26:35,581	137	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:26:35,583	139	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:26:35,598	154	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:26:36,351	907	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:26:36,356	912	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success
+INFO	2021-12-07 10:33:52,055	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:33:52,079	24	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:33:52,082	27	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:33:52,085	30	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:33:52,088	33	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:33:52,179	124	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:33:52,181	126	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:33:52,183	128	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:33:52,185	130	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:33:52,201	146	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:34:55,136	63081	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:34:55,154	63099	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success
+INFO	2021-12-07 10:36:23,498	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:36:23,539	41	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:36:23,542	44	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:36:23,545	47	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:36:23,548	50	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:36:23,810	312	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:36:23,813	315	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:36:23,815	317	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:36:23,817	319	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:36:23,872	374	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:36:58,582	35084	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:36:58,601	35103	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success
+INFO	2021-12-07 10:53:49,271	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:53:49,303	32	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:53:49,306	35	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:53:49,310	39	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:53:49,313	42	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:53:49,395	124	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:53:49,397	126	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:53:49,398	127	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:53:49,400	129	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:53:49,415	144	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:54:21,480	32209	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:54:21,485	32214	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success
+INFO	2021-12-07 10:55:07,608	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:55:07,642	34	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:55:07,645	37	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:55:07,648	40	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:55:07,651	43	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:55:07,753	145	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:55:07,755	147	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:55:07,757	149	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:55:07,758	150	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:55:07,776	168	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:55:39,310	31702	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:55:39,321	31713	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success
+INFO	2021-12-07 10:57:26,432	1	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:57:26,468	37	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:57:26,470	39	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:57:26,474	43	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:57:26,476	45	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:57:26,567	136	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:57:26,569	138	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:57:26,571	140	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:57:26,573	142	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:57:26,589	158	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:57:59,159	32728	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:57:59,178	32747	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success
+INFO	2021-12-07 10:59:27,268	0	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:59:27,304	36	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:59:27,307	39	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:59:27,310	42	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:59:27,313	45	com.example.CloudKeeper.service.CloudService	[main]	User defined: login Test user, id 1
+INFO	2021-12-07 10:59:27,407	139	com.example.CloudKeeper.controller.CloudController	[main]	File list provided. Limit 3
+INFO	2021-12-07 10:59:27,409	141	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 uploaded
+INFO	2021-12-07 10:59:27,411	143	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 renamed to newFilename1
+INFO	2021-12-07 10:59:27,413	145	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 downloaded
+INFO	2021-12-07 10:59:27,430	162	com.example.CloudKeeper.controller.CloudController	[main]	File filename1 removed
+INFO	2021-12-07 10:59:54,732	27464	com.example.CloudKeeper.service.AuthService	[main]	User Test user authorization success. JWT: authTocken
+INFO	2021-12-07 10:59:54,737	27469	com.example.CloudKeeper.service.AuthService	[main]	User Test user logout success

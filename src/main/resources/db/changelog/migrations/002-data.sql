@@ -1,6 +1,8 @@
 --liquibase formatted sql
 --changeset Elyne:001
 --validCheckSum: 8:bf219c22ac02e7c1daec889b03f835b7
+--preconditions onFail:CONTINUE onError:HALT
+--precondition-sql-check expectedResult:0 SELECT count(*) FROM users;
 
 insert into users (login, password)
 values ('Elyne@gmail.com', '$2a$09$lGLoHmbdAusmMX/BnRV6defnPQN937UaEL//l0Rld5XvDrwe3kx/W'),

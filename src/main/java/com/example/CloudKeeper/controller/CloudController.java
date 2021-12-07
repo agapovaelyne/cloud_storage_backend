@@ -1,7 +1,5 @@
 package com.example.CloudKeeper.controller;
 
-import com.example.CloudKeeper.DTO.AuthorizationRequestDTO;
-import com.example.CloudKeeper.DTO.AuthorizationTokenDTO;
 import com.example.CloudKeeper.DTO.ErrorResponseDTO;
 import com.example.CloudKeeper.entity.CloudFile;
 import com.example.CloudKeeper.exception.ErrorInputData;
@@ -31,18 +29,6 @@ public class CloudController {
 
     public CloudController(CloudService cloudService) {
         this.cloudService = cloudService;
-    }
-
-    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AuthorizationTokenDTO> login(@Valid @RequestBody AuthorizationRequestDTO authorization) {
-        String authToken = cloudService.login(authorization);
-        return authToken != null ? new ResponseEntity<>(new AuthorizationTokenDTO(authToken), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-    }
-
-    @PostMapping(value = "/logout")
-    public HttpStatus logout(@RequestHeader("auth-token") String authToken) {
-        cloudService.logout(authToken);
-        return HttpStatus.OK;
     }
 
     @PostMapping(value = "/file", produces = MediaType.APPLICATION_JSON_VALUE, consumes = {"multipart/form-data"})

@@ -15,7 +15,7 @@ import static java.util.Optional.of;
 public class CloudServiceTest {
     private final TestModels testModels = new TestModels();
     private final CloudRepository cloudRepositoryMock = Mockito.mock(CloudRepository.class);
-    private final CloudService cloudService = new CloudService(cloudRepositoryMock, testModels.getAuthenticationManagerMock(), testModels.getJwtUtilsMock());
+    private final CloudService cloudService = new CloudService(cloudRepositoryMock);
 
     @Test
     void uploadFile_test() throws IOException {
