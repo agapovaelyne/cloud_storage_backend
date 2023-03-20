@@ -1,26 +1,26 @@
-# CloudKeeper (облачное хранилище)
+# CloudKeeper (cloud storage)
 
-## Особенности реализации:
+## Implementation features:
 
 
-- **Application implements features described in the** [Specification](CloudServiceSpecification.yaml)
+- **Application implements features described in** [Specification](CloudServiceSpecification.yaml)
 
 
 - **App built with Spring Boot:**
 
-  The application provides a RESTful interface integrated with the [frontend](frontend/cloudKeeper-frontend).
+  The application provides a RESTful interface integrated with [frontend](frontend/cloudKeeper-frontend).
 
 
 - **User data is stored in database:**
 
-  The application uses Postgres database.\
+  The application uses Postgres database.
   
   Database is initializes on first application run via Liquibase framework's migration mechanisms (see [initialization scripts](src/main/resources/db/changelog)).
 
 - **Implemented authentication and other information security mechanisms (e.g. access control):**
 
   - [Token-Based Authentication](src/main/java/com/example/CloudKeeper/security),
-  - [Spring Security](src/main/java/com/example/CloudKeeper/config/SecurityConfig.java)
+  - [Spring Security](src/main/java/com/example/CloudKeeper/config/SecurityConfig.java),
   - [CORS](src/main/java/com/example/CloudKeeper/config/MvcConfig.java).
 
 
@@ -41,7 +41,7 @@
 
   Key operations are logged (authorization, file operations (uploading / downloading / renaming), displaying a list of user files) and their results (INFO level), as well as errors (ERROR level),
 
-  The log is written to a file [cloudKeeper-backend.log](log/cloudKeeper-backend.log).
+  The log is written to the file [cloudKeeper-backend.log](log/cloudKeeper-backend.log).
 
 
 - **Application code is covered with unit-tests using JUnit, Mockito:**
@@ -58,37 +58,36 @@
 
 ## Launch:
 
-1. Install and run frontend, следуя [инструкции](frontend/cloudKeeper-frontend/README.md),
-2. Убедитесь, что на машине установлен Docker,
-3. Осуществите сборку проекта, выполнив команду в терминале:
+1. Install and run frontend following [instructions](frontend/cloudKeeper-frontend/README.md),
+2. Make sure Docker is installed on your machine,
+3. Build the project by running the following command in terminal:
 ```
 mvn install
 ```
-3. Подготовьте (соберите) образы для запуска backend'a и frontend'a, выполнив в терминале последовательно команды:
+3. Prepare (build) docker images to launch the backend and the frontend by running the following commands in terminal:
 ```
 docker build --file=frontend/Dockerfile  -t cloudkeeper-frontend .
 
 docker build --file=Dockerfile  -t cloudkeeper-app .
 ```
-3. После успешной сборки образов запустите docker-compose скрипт, выполнив команду:
+3. After successfully building the images, run the docker-compose script by running the command in terminal:
 
 ```
 docker-compose up
 ```
-4. После успешного запуска будут активны и готовы к использованию:
-- backend по адресу http://localhost:8080,
-- frontend по адресу http://localhost:8081,
-- база данных по адресу http://localhost:5432.
+4. After a successful launch, the following will be running and ready for use:
+- backend at http://localhost:8080,
+- frontend at http://localhost:8081,
+- database at http://localhost:5432.
 
-## Использование:
-- С описанием и правилами использования front'а можно ознакомиться [здесь](frontend/cloudKeeper-frontend/README.md),
-
-- Для тестирования функционала **рекомендуется использовать преднастроенные учетные данные** (см. в DML скрипте [002-data.sql](src/main/resources/db/changelog/migrations/002-data.sql)):
+## Usage:
+- Description and rules for using the frontend can be found [here](frontend/cloudKeeper-frontend/README.md),
+- It's **recommended to use preconfigured credentials** to test the functionality (could be found in DML-script [002-data.sql](src/main/resources/db/changelog/migrations/002-data.sql)):
 
   - **login:** *User1@mail.ru*, **password:** *P@sswd123*
   - **login:** *Elyne@gmail.com*, **password:** *@pplicAtion3313*
 
-## Скриншоты:
+## Screenshots:
 <b name="enter">Enter Window:</b>
 
 
