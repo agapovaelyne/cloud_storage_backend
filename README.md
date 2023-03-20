@@ -56,7 +56,7 @@
 
 - **The configuration settings are in** [application.yml](src/main/resources/application.yml).
 
-## Launch:
+## Project setup and launch:
 
 1. Install and run frontend following [instructions](frontend/cloudKeeper-frontend/README.md),
 2. Make sure Docker is installed on your machine,
