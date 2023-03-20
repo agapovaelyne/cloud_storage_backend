@@ -3,34 +3,33 @@
 ## Особенности реализации:
 
 
-- **Сервис реализует методы, описанные в** [Спецификации](CloudServiceSpecification.yaml)
+- **Application implements features described in the** [Specification](CloudServiceSpecification.yaml)
 
 
-- **Приложение разработано с использованием Spring Boot:**
+- **App built with Spring Boot:**
 
-  Сервис предоставляет REST интерфейс для интеграции с [front'ом приложения](frontend/cloudKeeper-frontend).
+  The application provides a RESTful interface integrated with the [frontend](frontend/cloudKeeper-frontend).
 
 
-- **Информация о пользователях и данные пользователей хранятся в базе данных (БД):**
+- **User data is stored in database:**
 
-  В проекте используется БД Postgres. 
+  The application uses Postgres database.\
   
-  БД инициализируется при первом запуске через docker-compose посредством механизмов миграции и фреймворка Liquibase (см. [скрипты инициализации](src/main/resources/db/changelog)).
- 
+  Database is initializes on first application run via Liquibase framework's migration mechanisms (see [initialization scripts](src/main/resources/db/changelog)).
 
-- **Реализована аутентификация и другие механизмы разграничения доступа:**
+- **Implemented authentication and other information security mechanisms (e.g. access control):**
 
   - [Token-Based Authentication](src/main/java/com/example/CloudKeeper/security),
   - [Spring Security](src/main/java/com/example/CloudKeeper/config/SecurityConfig.java)
   - [CORS](src/main/java/com/example/CloudKeeper/config/MvcConfig.java).
 
 
-- **Используется сборщик пакетов Maven:**
+- **Maven build automation tool is used:**
 
-  См.  [pom.xml](pom.xml).
+  See  [pom.xml](pom.xml).
 
 
-- **Для запуска используются docker, docker-compose.**
+- **Application runs in container using Docker, Docker Compose.**
 
   См.
     - [Dockerfile для front'a](frontend/Dockerfile),
@@ -38,28 +37,28 @@
     - [Docker-compose скрипт](docker-compose.yml).
 
 
-- **В приложении реализовано логирование посредством [log4j](src/main/resources/log4j.properties):**
+- **Implemented logging using [log4j](src/main/resources/log4j.properties):**
 
-  Логируются основные операции (загрузка/скачивание/переименование файла, вывод списка файлов пользователя, авторизация) и их результаты (уровень INFO), а также ошибки (уровень ERROR),
+  Key operations are logged (authorization, file operations (uploading / downloading / renaming), displaying a list of user files) and their results (INFO level), as well as errors (ERROR level),
 
-  Запись лога производится в файл [cloudKeeper-backend.log](log/cloudKeeper-backend.log).
-
-
-- **Код покрыт unit-тестами с использованием Mockito:**
-
-  Классы тестов расположены в [src/test/java/com/example/CloudKeeper](src/test/java/com/example/CloudKeeper).
+  The log is written to a file [cloudKeeper-backend.log](log/cloudKeeper-backend.log).
 
 
-- **Реализованы интеграционные тесты с использованием Testcontainers:**
+- **Application code is covered with unit-tests using JUnit, Mockito:**
 
-  Класс интеграционных тестов - [src/test/java/com/example/CloudKeeper/container](src/test/java/com/example/CloudKeeper/container).
+  Test classes are located [src/test/java/com/example/CloudKeeper](src/test/java/com/example/CloudKeeper).
 
 
-- **Настройки конфигурации прописаны в файле** [application.yml](src/main/resources/application.yml).
+- **Implemented integration tests using Testcontainers:**
 
-## Запуск:
+  Integration tests class - [src/test/java/com/example/CloudKeeper/container](src/test/java/com/example/CloudKeeper/container).
 
-1. Установите и запустите frontend, следуя [инструкции](frontend/cloudKeeper-frontend/README.md),
+
+- **The configuration settings are in ** [application.yml](src/main/resources/application.yml).
+
+## Launch:
+
+1. Install and run frontend, следуя [инструкции](frontend/cloudKeeper-frontend/README.md),
 2. Убедитесь, что на машине установлен Docker,
 3. Осуществите сборку проекта, выполнив команду в терминале:
 ```
