@@ -31,7 +31,7 @@
 
 - **Application runs in container using Docker, Docker Compose.**
 
-  См.
+  See
     - [Dockerfile для front'a](frontend/Dockerfile),
     - [Dockerfile для backend'a](Dockerfile),
     - [Docker-compose скрипт](docker-compose.yml).
@@ -46,7 +46,7 @@
 
 - **Application code is covered with unit-tests using JUnit, Mockito:**
 
-  Test classes are located [src/test/java/com/example/CloudKeeper](src/test/java/com/example/CloudKeeper).
+  Test classes are located in [src/test/java/com/example/CloudKeeper](src/test/java/com/example/CloudKeeper).
 
 
 - **Implemented integration tests using Testcontainers:**
@@ -54,7 +54,7 @@
   Integration tests class - [src/test/java/com/example/CloudKeeper/container](src/test/java/com/example/CloudKeeper/container).
 
 
-- **The configuration settings are in ** [application.yml](src/main/resources/application.yml).
+- **The configuration settings are in** [application.yml](src/main/resources/application.yml).
 
 ## Launch:
 
