@@ -1,13 +1,12 @@
 # CloudKeeper frontend
-Frontend предоставлен [Нетологией](https://netology.ru/)
 
-<a name="setup"><h2>Описание и запуск</h2></a>
+<a name="setup"><h2>Launch</h2></a>
 
-1. Установить nodejs (версия не ниже 14.15.0) на компьютер следуя инструкции: https://nodejs.org/ru/download/,
-2. Скачать [frontend](./) (JavaScript) совместно с основным проектом,
-3. Перейти в папку [cloudKeeper-frontend](./) приложения и все команды для запуска выполнять из нее,
-4. Следуя описанию [Project setup](#setup), запустить nodejs приложение (npm install...),
-5. По-умолчанию frontend запускается на порту 8080 и доступен по url в браузере `http://localhost:8080`.
+1. Install Node.js (version 14.15.0 or higher) following the instructions: https://nodejs.org/ru/download/,
+2. Download [frontend](./) part (JavaScript) along with the main project,
+3. Move to [cloudKeeper-frontend](./) folder and run all the following commands from there,
+4. Following the [Project setup](#setup) instruction, launch Node.js application (npm install...),
+5. By default, frontend runs on port 8080 and available at `http://localhost:8080`.
 
 <a name="setup"><h2>Project setup</h2></a>
 ```
