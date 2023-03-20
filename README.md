@@ -39,7 +39,7 @@
 
 - **Implemented logging using [log4j](src/main/resources/log4j.properties):**
 
-  Key operations are logged (authorization, file operations (uploading / downloading / renaming), displaying a list of user files) and their results (INFO level), as well as errors (ERROR level),
+  Key operations are logged (authorization, file operations (uploading / downloading / renaming), displaying a list of user files) (INFO level), as well as errors (ERROR level),
 
   The log is written to the file [cloudKeeper-backend.log](log/cloudKeeper-backend.log).
 
