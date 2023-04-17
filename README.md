@@ -32,9 +32,9 @@
 - **Application runs in container using Docker, Docker Compose.**
 
   See
-    - [Dockerfile для front'a](frontend/Dockerfile),
-    - [Dockerfile для backend'a](Dockerfile),
-    - [Docker-compose скрипт](docker-compose.yml).
+    - [Dockerfile for the frontend](frontend/Dockerfile),
+    - [Dockerfile for the backend](Dockerfile),
+    - [Docker-compose](docker-compose.yml).
 
 
 - **Implemented logging using [log4j](src/main/resources/log4j.properties):**
